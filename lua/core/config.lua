@@ -10,7 +10,7 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 30
 
 -- appearance
-opt.shortmess:append('I')
+opt.shortmess:append("I")
 opt.fillchars = { eob = " " }
 
 -- status line
@@ -44,18 +44,18 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- disable auto commenting
 autocmd("FileType", {
-  pattern = "*",
-  command = "setlocal formatoptions-=cro"
+	pattern = "*",
+	command = "setlocal formatoptions-=cro",
 })
 
 -- remove trailing whitespace on save
 autocmd("BufWritePre", {
-  pattern = "*",
-  command = ":%s/\\s\\+$//e"
+	pattern = "*",
+	command = ":%s/\\s\\+$//e",
 })
 
 -- remove duplicate blank lines on save
 autocmd("BufWritePre", {
-  pattern = "*",
-  command = ":%s/\\n\\{3,}/\\r\\r/e"
+	pattern = "*",
+	command = ":%s/\\n\\{3,}/\\r\\r/e",
 })

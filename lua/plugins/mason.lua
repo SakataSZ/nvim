@@ -1,13 +1,13 @@
 local options = {
-  ensure_installed = { "lua-language-server" },
+	ensure_installed = { "lua-language-server" },
 
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-    },
-  },
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+		},
+	},
 }
 
 return options
