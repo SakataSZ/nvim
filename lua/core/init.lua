@@ -1,2 +1,4 @@
 require("core.config")
-require("core.keymap").setup()
+
+local keymap = require("core.keymap")
+require("core.utils").load_keymaps(keymap)

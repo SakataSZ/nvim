@@ -3,42 +3,24 @@ local M = {}
 M.general = {
 	i = {},
 	n = {
-		["<ESC>"] = { ":noh <CR>" },
+		["<ESC>"] = { ":noh <CR>", "clear highlights" },
 
-		-- move between windows
-		["<c-h>"] = { "<c-w>h" },
-		["<C-l>"] = { "<C-w>l" },
-		["<C-j>"] = { "<C-w>j" },
-		["<C-k>"] = { "<C-w>k" },
+		["<c-h>"] = { "<c-w>h", "move to left window" },
+		["<c-j>"] = { "<c-w>j", "move to bottom window" },
+		["<c-k>"] = { "<c-w>k", "move to top window" },
+		["<c-l>"] = { "<c-w>l", "move to right window" },
 
-		-- move between buffers
-		["<TAB>"] = { ":bnext <CR>" },
-		["<S-TAB>"] = { ":bprevious <CR>" },
-		["<leader>x"] = { ":bd! <CR>" },
-		["<leader>X"] = { ":bufdo bd! <CR>" },
+		["<TAB>"] = { ":bnext <CR>", "next buffer" },
+		["<S-TAB>"] = { ":bprevious <CR>", "previous buffer" },
+		["<leader>x"] = { ":bd! <CR>", "close current buffer" },
+		["<leader>X"] = { ":bufdo bd! <CR>", "close all buffers" },
 
-		-- toggle netrw
-		["<C-n>"] = { ":Lexplore <CR>" },
+		["<C-n>"] = { ":Lexplore <CR>", "toggle netrw" },
 	},
 	v = {},
 	t = {
-      ["<C-x>"] = { "<C-\\><C-n>" },
-  },
+		["<C-x>"] = { "<C-\\><C-n>", "exit terminal mode" },
+	},
 }
-
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-
-local function apply_keymap(mode, lhs, rhs, opts)
-	keymap(mode, lhs, rhs, opts)
-end
-
-function M.setup()
-	for mode, maps in pairs(M.general) do
-		for lhs, rhs in pairs(maps) do
-			apply_keymap(mode, lhs, rhs[1], opts)
-		end
-	end
-end
 
 return M

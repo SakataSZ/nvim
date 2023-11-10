@@ -5,13 +5,14 @@ local opt = vim.opt
 local g = vim.g
 
 -- netrw
-vim.g.netrw_liststyle = 3
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 30
+g.netrw_liststyle = 3
+g.netrw_banner = 0
+g.netrw_winsize = 30
 
 -- appearance
 opt.shortmess:append("I")
 opt.fillchars = { eob = " " }
+opt.termguicolors = true
 
 -- status line
 opt.showmode = false
