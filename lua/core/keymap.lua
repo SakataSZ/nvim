@@ -14,14 +14,16 @@ M.general = {
 		-- move between buffers
 		["<TAB>"] = { ":bnext <CR>" },
 		["<S-TAB>"] = { ":bprevious <CR>" },
-		["<leader>x"] = { ":bd <CR>" },
-		["<leader>X"] = { ":bufdo bd <CR>" },
+		["<leader>x"] = { ":bd! <CR>" },
+		["<leader>X"] = { ":bufdo bd! <CR>" },
 
 		-- toggle netrw
 		["<C-n>"] = { ":Lexplore <CR>" },
 	},
 	v = {},
-	t = {},
+	t = {
+      ["<C-x>"] = { "<C-\\><C-n>" },
+  },
 }
 
 local keymap = vim.api.nvim_set_keymap
