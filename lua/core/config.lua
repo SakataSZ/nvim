@@ -17,6 +17,7 @@ opt.shortmess:append("I")
 opt.fillchars = { eob = " " }
 opt.termguicolors = true
 opt.laststatus = 3
+opt.pumblend = 60
 
 -- status line
 opt.showmode = false

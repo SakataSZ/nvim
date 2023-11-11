@@ -1,14 +1,9 @@
 local plugins = {
-	-- Github Copilot
-	{
-		"github/copilot.vim",
-		event = "BufRead",
-		config = function()
-			vim.g.copilot_filetypes = { markdown = true }
-		end,
-	},
+	------------------------------------------------------------
+	-- LSP and completion
+	------------------------------------------------------------
 
-	-- LSP stuff
+	-- Mason
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
@@ -17,6 +12,32 @@ local plugins = {
 		end,
 		config = function(_, opts)
 			require("mason").setup(opts)
+		end,
+	},
+
+  -- Mason LSP config
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "neovim/nvim-lspconfig" },
+    event = "BufEnter",
+    opts = function()
+      return require("plugins.configs.mason-lspconfig")
+    end,
+    config = function(_, opts)
+      require("mason-lspconfig").setup(opts)
+    end,
+  },
+
+	------------------------------------------------------------
+	-- Utilities
+	------------------------------------------------------------
+
+	-- Github Copilot
+	{
+		"github/copilot.vim",
+		event = "BufRead",
+		config = function()
+			vim.g.copilot_filetypes = { markdown = true }
 		end,
 	},
 
@@ -82,6 +103,7 @@ local plugins = {
 			vim.cmd("colorscheme catppuccin")
 			vim.cmd([[ highlight Normal guibg=none ctermbg=none ]])
 			vim.cmd([[ highlight NormalNC guibg=none ctermbg=none ]])
+      vim.cmd([[ highlight NormalFloat guibg=none ctermbg=none ]])
 		end,
 	},
 

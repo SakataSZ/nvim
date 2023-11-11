@@ -1,6 +1,4 @@
 local options = {
-	ensure_installed = { "lua-language-server" },
-
 	settings = {
 		Lua = {
 			diagnostics = {
