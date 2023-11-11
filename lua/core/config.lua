@@ -4,15 +4,19 @@
 local opt = vim.opt
 local g = vim.g
 
+-- language
+vim.cmd('let $LANG="en_US.UTF-8"')
+
 -- netrw
 g.netrw_liststyle = 3
 g.netrw_banner = 0
-g.netrw_winsize = 30
+g.netrw_winsize = 20
 
 -- appearance
 opt.shortmess:append("I")
 opt.fillchars = { eob = " " }
 opt.termguicolors = true
+opt.laststatus = 3
 
 -- status line
 opt.showmode = false
