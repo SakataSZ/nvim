@@ -40,4 +40,10 @@ M.lsp = {
 	},
 }
 
+M.nvimtree = {
+  n = {
+    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+  },
+}
+
 return M

@@ -112,10 +112,22 @@ local plugins = {
 		opts = function()
 			return require("plugins.configs.nvterm")
 		end,
-		config = function()
-			require("nvterm").setup()
+		config = function(_, opts)
+			require("nvterm").setup(opts)
 		end,
 	},
+
+  -- nvim-tree
+  {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeClose" },
+    opts = function()
+      return require("plugins.configs.nvim-tree")
+    end,
+    config = function(_, opts)
+      require("nvim-tree").setup(opts)
+    end
+  },
 
 	------------------------------------------------------------
 	-- appearance
@@ -131,25 +143,6 @@ local plugins = {
 		end,
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
-		end,
-	},
-
-	-- colorscheme
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		priority = 1000,
-		event = "BufEnter",
-		config = function()
-			require("catppuccin").setup({
-				flavour = "mocha",
-				transparent_background = true,
-				integrations = {
-					cmp = true,
-					treesitter = true,
-				},
-			})
-			vim.cmd("colorscheme catppuccin")
 		end,
 	},
 
@@ -178,6 +171,32 @@ local plugins = {
 			require("lualine").setup(opts)
 		end,
 	},
+
+	-- colorscheme
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000,
+		event = "BufEnter",
+		config = function()
+			require("catppuccin").setup({
+				flavour = "mocha",
+        transparent_background = true,
+				integrations = {
+					cmp = true,
+					treesitter = true,
+          nvimtree = true,
+				},
+        custom_highlights = function(colors)
+          return {
+            CursorLine = { bg = colors.overlay0 },
+          }
+        end,
+			})
+			vim.cmd("colorscheme catppuccin")
+		end,
+	},
+
 }
 
 -- load Lazy

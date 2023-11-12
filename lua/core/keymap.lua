@@ -15,7 +15,8 @@ M.general = {
 		["<leader>x"] = { ":bd! <CR>", "close current buffer" },
 		["<leader>X"] = { ":bufdo bd! <CR>", "close all buffers" },
 
-		["<C-n>"] = { ":Lexplore <CR>", "toggle netrw" },
+    -- Netrw: deprecated
+		-- ["<C-n>"] = { ":Lexplore <CR>", "toggle netrw" },
 	},
 	v = {},
 	t = {

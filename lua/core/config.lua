@@ -15,9 +15,8 @@ g.netrw_winsize = 20
 -- appearance
 opt.shortmess:append("I")
 opt.fillchars = { eob = " " }
-opt.termguicolors = true
 opt.laststatus = 3
-opt.pumblend = 30
+opt.termguicolors = true
 
 -- status line
 opt.showmode = false
