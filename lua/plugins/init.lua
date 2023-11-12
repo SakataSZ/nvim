@@ -2,7 +2,6 @@ local plugins = {
 	------------------------------------------------------------
 	-- LSP and completion
 	------------------------------------------------------------
-
 	-- Mason
 	{
 		"williamboman/mason.nvim",
@@ -15,18 +14,60 @@ local plugins = {
 		end,
 	},
 
-  -- Mason LSP config
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
-    event = "BufEnter",
-    opts = function()
-      return require("plugins.configs.mason-lspconfig")
-    end,
-    config = function(_, opts)
-      require("mason-lspconfig").setup(opts)
-    end,
-  },
+	-- Mason LSP config
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = { "neovim/nvim-lspconfig" },
+		event = "BufEnter",
+		opts = function()
+			return require("plugins.configs.mason-lspconfig")
+		end,
+		config = function(_, opts)
+			require("mason-lspconfig").setup(opts)
+		end,
+	},
+
+	-- CMP
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			{
+				"saadparwaiz1/cmp_luasnip",
+				"hrsh7th/cmp-nvim-lua",
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+			},
+			{
+				"L3MON4D3/LuaSnip",
+				dependencies = "rafamadriz/friendly-snippets",
+				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+				config = function(_, opts)
+					require("plugins.configs.luasnip").luasnip(opts)
+				end,
+			},
+			{
+				"windwp/nvim-autopairs",
+				opts = {
+					fast_wrap = {},
+					disable_filetype = { "TelescopePrompt", "vim" },
+				},
+				config = function(_, opts)
+					require("nvim-autopairs").setup(opts)
+
+					local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+					require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+				end,
+			},
+		},
+		opts = function()
+			return require("plugins.configs.cmp")
+		end,
+		config = function(_, opts)
+			require("cmp").setup(opts)
+		end,
+	},
 
 	------------------------------------------------------------
 	-- Utilities
@@ -71,7 +112,7 @@ local plugins = {
 		opts = function()
 			return require("plugins.configs.nvterm")
 		end,
-		config = function(_, opts)
+		config = function()
 			require("nvterm").setup()
 		end,
 	},
@@ -103,7 +144,7 @@ local plugins = {
 			vim.cmd("colorscheme catppuccin")
 			vim.cmd([[ highlight Normal guibg=none ctermbg=none ]])
 			vim.cmd([[ highlight NormalNC guibg=none ctermbg=none ]])
-      vim.cmd([[ highlight NormalFloat guibg=none ctermbg=none ]])
+			vim.cmd([[ highlight NormalFloat guibg=none ctermbg=none ]])
 		end,
 	},
 
