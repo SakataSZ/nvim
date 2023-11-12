@@ -24,12 +24,10 @@ local options = {
 
 	window = {
 		completion = {
-			winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
 			scrollbar = false,
 		},
 		documentation = {
 			border = border("CmpDocBorder"),
-			winhighlight = "Normal:CmpDoc",
 		},
 	},
 	snippet = {

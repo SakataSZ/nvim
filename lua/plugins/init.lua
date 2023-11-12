@@ -137,15 +137,34 @@ local plugins = {
 	-- colorscheme
 	{
 		"catppuccin/nvim",
-		name = "catppuccin-mocha",
+		name = "catppuccin",
 		priority = 1000,
 		event = "BufEnter",
 		config = function()
+			require("catppuccin").setup({
+				flavour = "mocha",
+				transparent_background = true,
+				integrations = {
+					cmp = true,
+					treesitter = true,
+				},
+			})
 			vim.cmd("colorscheme catppuccin")
-			vim.cmd([[ highlight Normal guibg=none ctermbg=none ]])
-			vim.cmd([[ highlight NormalNC guibg=none ctermbg=none ]])
-			vim.cmd([[ highlight NormalFloat guibg=none ctermbg=none ]])
 		end,
+	},
+
+	-- bufferline
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		event = "BufEnter",
+    opts = function()
+      return require("plugins.configs.bufferline")
+    end,
+    config = function(_, opts)
+      require("bufferline").setup(opts)
+    end
 	},
 
 	-- lualine
