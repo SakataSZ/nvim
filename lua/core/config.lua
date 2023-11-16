@@ -56,18 +56,18 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- disable auto commenting
 autocmd("FileType", {
-	pattern = "*",
-	command = "setlocal formatoptions-=cro",
+  pattern = "*",
+  command = "setlocal formatoptions-=cro",
 })
 
 -- remove trailing whitespace on save
 autocmd("BufWritePre", {
-	pattern = "*",
-	command = ":%s/\\s\\+$//e",
+  pattern = "*",
+  command = ":%s/\\s\\+$//e",
 })
 
 -- remove duplicate blank lines on save
 autocmd("BufWritePre", {
-	pattern = "*",
-	command = ":%s/\\n\\{3,}/\\r\\r/e",
+  pattern = "*",
+  command = ":%s/\\n\\{3,}/\\r\\r/e",
 })
