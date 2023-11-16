@@ -78,7 +78,7 @@ local plugins = {
 		"github/copilot.vim",
 		event = "BufRead",
 		config = function()
-			vim.g.copilot_filetypes = { markdown = true }
+			vim.g.copilot_filetypes = { ['*'] = true }
 		end,
 	},
 
@@ -213,7 +213,11 @@ local plugins = {
 				custom_highlights = function(colors)
 					return {
 						CursorLine = { bg = colors.overlay0 },
-						FloatBorder = { fg = colors.teal },
+						FloatBorder = { fg = colors.sapphire },
+            LineNr = { fg = colors.sapphire },
+            WinSeparator = { fg = colors.sapphire },
+            NvimTreeWinSeparator = { fg = colors.sapphire },
+            Comment = { fg = colors.sapphire },
 					}
 				end,
 			})
