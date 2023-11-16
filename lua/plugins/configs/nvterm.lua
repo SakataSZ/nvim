@@ -1,4 +1,3 @@
-
 return {
 	terminals = {
 		shell = vim.o.shell,

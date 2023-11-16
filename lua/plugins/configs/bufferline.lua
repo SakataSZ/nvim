@@ -1,5 +1,5 @@
 return {
-  options = {
-    tab_size = 18,
-  }
+	options = {
+		tab_size = 18,
+	},
 }

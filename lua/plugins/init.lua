@@ -82,6 +82,18 @@ local plugins = {
 		end,
 	},
 
+	-- Gitsigns
+	{
+		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
+		opts = function()
+			return require("plugins.configs.gitsigns")
+		end,
+		config = function(_, opts)
+			require("gitsigns").setup(opts)
+		end,
+	},
+
 	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -117,17 +129,28 @@ local plugins = {
 		end,
 	},
 
-  -- nvim-tree
-  {
-    "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeClose" },
-    opts = function()
-      return require("plugins.configs.nvim-tree")
-    end,
-    config = function(_, opts)
-      require("nvim-tree").setup(opts)
-    end
-  },
+	-- nvim-tree
+	{
+		"nvim-tree/nvim-tree.lua",
+		cmd = { "NvimTreeToggle", "NvimTreeOpen", "NvimTreeClose" },
+		opts = function()
+			return require("plugins.configs.nvim-tree")
+		end,
+		config = function(_, opts)
+			require("nvim-tree").setup(opts)
+		end,
+	},
+
+	-- markdown-preview
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		build = "cd app && bun install",
+		init = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	},
 
 	------------------------------------------------------------
 	-- appearance
@@ -152,12 +175,12 @@ local plugins = {
 		version = "*",
 		dependencies = "nvim-tree/nvim-web-devicons",
 		event = "BufEnter",
-    opts = function()
-      return require("plugins.configs.bufferline")
-    end,
-    config = function(_, opts)
-      require("bufferline").setup(opts)
-    end
+		opts = function()
+			return require("plugins.configs.bufferline")
+		end,
+		config = function(_, opts)
+			require("bufferline").setup(opts)
+		end,
 	},
 
 	-- lualine
@@ -181,22 +204,22 @@ local plugins = {
 		config = function()
 			require("catppuccin").setup({
 				flavour = "mocha",
-        transparent_background = true,
+				transparent_background = true,
 				integrations = {
 					cmp = true,
 					treesitter = true,
-          nvimtree = true,
+					nvimtree = true,
 				},
-        custom_highlights = function(colors)
-          return {
-            CursorLine = { bg = colors.overlay0 },
-          }
-        end,
+				custom_highlights = function(colors)
+					return {
+						CursorLine = { bg = colors.overlay0 },
+						FloatBorder = { fg = colors.teal },
+					}
+				end,
 			})
 			vim.cmd("colorscheme catppuccin")
 		end,
 	},
-
 }
 
 -- load Lazy

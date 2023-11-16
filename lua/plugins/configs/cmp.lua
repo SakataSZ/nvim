@@ -25,9 +25,10 @@ local options = {
 	window = {
 		completion = {
 			scrollbar = false,
+			border = border("FloatBorder"),
 		},
 		documentation = {
-			border = border("CmpDocBorder"),
+			border = border("FloatBorder"),
 		},
 	},
 	snippet = {

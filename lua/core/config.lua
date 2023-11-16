@@ -3,6 +3,7 @@
 ------------------------------------------------------------
 local opt = vim.opt
 local g = vim.g
+local _border = "single"
 
 -- language
 vim.cmd('let $LANG="en_US.UTF-8"')
@@ -17,6 +18,9 @@ opt.shortmess:append("I")
 opt.fillchars = { eob = " " }
 opt.laststatus = 3
 opt.termguicolors = true
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = _border })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = _border })
+vim.diagnostic.config({ float = { border = _border } })
 
 -- status line
 opt.showmode = false
@@ -41,6 +45,9 @@ g.mapleader = " "
 -- scrolling
 opt.scrolloff = 8
 opt.sidescrolloff = 8
+
+-- environment
+g.loaded_node_provider = 0
 
 ------------------------------------------------------------
 -- autocmds

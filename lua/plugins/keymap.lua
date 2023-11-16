@@ -41,9 +41,19 @@ M.lsp = {
 }
 
 M.nvimtree = {
-  n = {
-    ["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
-  },
+	n = {
+		["<C-n>"] = { "<cmd> NvimTreeToggle <CR>", "Toggle nvimtree" },
+	},
+}
+
+M.gitsigns = {
+	n = {
+		["[c"] = { "<cmd> Gitsigns next_hunk <CR>", "Next hunk" },
+		["]c"] = { "<cmd> Gitsigns prev_hunk <CR>", "Previous hunk" },
+		["<leader>rh"] = { "<cmd> Gitsigns reset_hunk <CR>", "Reset hunk" },
+		["<leader>ph"] = { "<cmd> Gitsigns preview_hunk <CR>", "Preview hunk" },
+		["<leader>gd"] = { "<cmd> Gitsigns diffthis <CR>", "git diff" },
+	},
 }
 
 return M
