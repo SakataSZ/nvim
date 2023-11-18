@@ -78,7 +78,7 @@ local plugins = {
     "github/copilot.vim",
     event = "BufRead",
     config = function()
-      vim.g.copilot_filetypes = { ['*'] = true }
+      vim.g.copilot_filetypes = { ["*"] = true }
     end,
   },
 
