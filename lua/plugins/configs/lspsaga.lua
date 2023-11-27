@@ -1,0 +1,5 @@
+return {
+  lightbulb = {
+    enable = false,
+  },
+}

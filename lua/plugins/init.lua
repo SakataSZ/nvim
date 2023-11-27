@@ -27,6 +27,21 @@ local plugins = {
     end,
   },
 
+  -- LSP saga
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
+    opts = function()
+      return require("plugins.configs.lspsaga")
+    end,
+    config = function(_, opts)
+      require("lspsaga").setup(opts)
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    }
+  },
+
   -- CMP
   {
     "hrsh7th/nvim-cmp",
@@ -70,6 +85,20 @@ local plugins = {
   },
 
   ------------------------------------------------------------
+  -- Language
+  ------------------------------------------------------------
+
+  -- Rust
+  {
+    "simrat39/rust-tools.nvim",
+    ft = "rust",
+    event = "BufRead",
+    config = function()
+      require("rust-tools").setup({})
+    end,
+  },
+
+  ------------------------------------------------------------
   -- Utilities
   ------------------------------------------------------------
 
@@ -78,7 +107,10 @@ local plugins = {
     "github/copilot.vim",
     event = "BufRead",
     config = function()
-      vim.g.copilot_filetypes = { ["*"] = true }
+      vim.g.copilot_filetypes = {
+        ["*"] = true ,
+        -- ["rust"] = false,
+      }
     end,
   },
 

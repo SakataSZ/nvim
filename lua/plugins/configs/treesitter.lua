@@ -1,5 +1,5 @@
 local options = {
-  ensure_installed = { "lua", "astro" },
+  ensure_installed = { "lua", "astro", "markdown", "markdown_inline" },
 
   highlight = {
     enable = true,

@@ -15,28 +15,30 @@ M.telescope = {
   },
 }
 
+-- nvterm
+local nvterm = require("nvterm.terminal")
 local nvterm_keymap = {
-  ["<M-h>"] = { "<cmd> lua require('nvterm.terminal').toggle('horizontal') <CR>", "" },
-  ["<M-v>"] = { "<cmd> lua require('nvterm.terminal').toggle('vertical') <CR>", "" },
-  ["<M-i>"] = { "<cmd> lua require('nvterm.terminal').toggle('float') <CR>", "" },
-  ["<leader>h"] = { "<cmd> lua require('nvterm.terminal').new('horizontal') <CR>", "" },
-  ["<leader>v"] = { "<cmd> lua require('nvterm.terminal').new('vertical') <CR>", "" },
+  ["<M-h>"] = { function() nvterm.toggle('horizontal') end, "toggle horizontal" },
+  ["<M-v>"] = { function() nvterm.toggle('vertical') end, "toggle vertical" },
+  ["<M-i>"] = { function() nvterm.toggle('float') end, "toggle float" },
 }
 M.nvterm = {
   n = nvterm_keymap,
   t = nvterm_keymap,
 }
 
+-- LSP(lspsaga)
 M.lsp = {
   n = {
-    ["gD"] = { "<cmd> lua vim.lsp.buf.declaration() <CR>", "LSP declaration" },
-    ["gd"] = { "<cmd> lua vim.lsp.buf.definition() <CR>", "LSP definition" },
-    ["K"] = { "<cmd> lua vim.lsp.buf.hover() <CR>", "LSP hover" },
-    ["<leader>ra"] = { "<cmd> lua vim.lsp.buf.rename() <CR>", "LSP rename" },
-    ["<leader>ca"] = { "<cmd> lua vim.lsp.buf.code_action() <CR>", "LSP code action" },
-    ["<leader>f"] = { "<cmd> lua vim.diagnostic.open_float() <CR>", "LSP float diagnostic" },
-    ["[d"] = { "<cmd> lua vim.diagnostic.goto_prev() <CR>", "LSP goto prev diagnostic" },
-    ["]d"] = { "<cmd> lua vim.diagnostic.goto_next() <CR>", "LSP goto next diagnostic" },
+    ["gd"] = { "<cmd> Lspsaga goto_definition <CR>", "LSP goto definition" },
+    ["gD"] = { "<cmd> Lspsaga peek_definition <CR>", "LSP peek definition" },
+    ["K"] = { "<cmd> Lspsaga hover_doc <CR>", "LSP show documentation" },
+    ["<leader>rn"] = { "<cmd> Lspsaga rename <CR>", "LSP rename" },
+    ["<leader>d"] = { "<cmd> Lspsaga show_line_diagnostics <CR>", "LSP show line diagnostics" },
+    ["<leader>fi"] = { "<cmd> Lspsaga finder <CR>", "LSP show methods search result" },
+    ["<leader>ca"] = { "<cmd> Lspsaga code_action <CR>", "LSP cade action" },
+    ["[d"] = { "<cmd> Lspsaga diagnostics_jump_prev <CR>", "LSP jump to previous diagnostic" },
+    ["]d"] = { "<cmd> Lspsaga diagnostics_jump_next <CR>", "LSP jump to next diagnostic" },
   },
 }
 
