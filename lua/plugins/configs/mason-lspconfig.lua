@@ -2,7 +2,13 @@ local lsp = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 return {
-  ensure_installed = { "lua_ls", "astro" },
+  ensure_installed = {
+    "lua_ls",
+    "astro",
+    "pylsp",
+    "tsserver",
+    "docker_compose_language_service"
+  },
   automatic_installation = false,
   handlers = {
     -- default handler

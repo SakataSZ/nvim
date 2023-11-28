@@ -18,9 +18,24 @@ M.telescope = {
 -- nvterm
 local nvterm = require("nvterm.terminal")
 local nvterm_keymap = {
-  ["<M-h>"] = { function() nvterm.toggle('horizontal') end, "toggle horizontal" },
-  ["<M-v>"] = { function() nvterm.toggle('vertical') end, "toggle vertical" },
-  ["<M-i>"] = { function() nvterm.toggle('float') end, "toggle float" },
+  ["<M-h>"] = {
+    function()
+      nvterm.toggle("horizontal")
+    end,
+    "toggle horizontal",
+  },
+  ["<M-v>"] = {
+    function()
+      nvterm.toggle("vertical")
+    end,
+    "toggle vertical",
+  },
+  ["<M-i>"] = {
+    function()
+      nvterm.toggle("float")
+    end,
+    "toggle float",
+  },
 }
 M.nvterm = {
   n = nvterm_keymap,

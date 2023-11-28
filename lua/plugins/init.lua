@@ -39,7 +39,7 @@ local plugins = {
     end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-    }
+    },
   },
 
   -- CMP
@@ -108,7 +108,7 @@ local plugins = {
     event = "BufRead",
     config = function()
       vim.g.copilot_filetypes = {
-        ["*"] = true ,
+        ["*"] = true,
         -- ["rust"] = false,
       }
     end,
