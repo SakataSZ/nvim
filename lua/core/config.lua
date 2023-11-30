@@ -45,9 +45,14 @@ opt.termguicolors = true
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = _border })
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = _border })
 vim.diagnostic.config({ float = { border = _border } })
+opt.termguicolors = true
 
 -- environment
+local virtual_env_dir = os.getenv("VIRTUAL_ENV")
 g.loaded_node_provider = 0
+if virtual_env_dir then
+  g.python3_host_prog = virtual_env_dir .. "/bin/python"
+end
 
 ------------------------------------------------------------
 -- autocmds
@@ -68,6 +73,6 @@ autocmd("BufWritePre", {
 
 -- remove duplicate blank lines on save
 autocmd("BufWritePre", {
-  pattern = "*",
+  pattern = "*[^py]",
   command = ":%s/\\n\\{3,}/\\r\\r/e",
 })
