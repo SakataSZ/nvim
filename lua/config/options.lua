@@ -7,6 +7,4 @@ vim.opt.number = false
 vim.opt.spell = false
 vim.opt.scrolloff = 8
 
-vim.api.nvim_set_hl(0, "LspReferenceText", {})
-vim.api.nvim_set_hl(0, "LspReferenceRead", {})
-vim.api.nvim_set_hl(0, "LspReferenceWrite", {})
+vim.g.neovide_input_macos_option_key_is_meta = "only_left"
